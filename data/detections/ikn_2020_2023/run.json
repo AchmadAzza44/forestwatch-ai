@@ -1,0 +1,136 @@
+{
+  "nama": "ikn_2020_2023",
+  "dibuat_utc": "2026-10-20T10:05:36+00:00",
+  "sumber": "Sentinel-2 L2A COG, AWS Open Data (sentinel-cogs); data Copernicus Sentinel (ESA)",
+  "tile": "50MMD",
+  "aoi_lonlat": [
+    116.55,
+    -1.2,
+    116.85,
+    -0.95
+  ],
+  "crs_analisis": "EPSG:32750",
+  "piksel_m": 20,
+  "periode_awal": {
+    "rentang": [
+      "2020-08-01",
+      "2020-10-31"
+    ],
+    "scene": [
+      {
+        "id": "S2B_50MMD_20200820_0_L2A",
+        "tanggal": "2020-08-20",
+        "awan_tile_pct": 23.304864
+      },
+      {
+        "id": "S2A_50MMD_20200924_0_L2A",
+        "tanggal": "2020-09-24",
+        "awan_tile_pct": 25.062659
+      },
+      {
+        "id": "S2A_50MMD_20201024_0_L2A",
+        "tanggal": "2020-10-24",
+        "awan_tile_pct": 26.021349
+      },
+      {
+        "id": "S2A_50MMD_20200914_0_L2A",
+        "tanggal": "2020-09-14",
+        "awan_tile_pct": 29.4532
+      },
+      {
+        "id": "S2B_50MMD_20200823_0_L2A",
+        "tanggal": "2020-08-23",
+        "awan_tile_pct": 29.549117
+      },
+      {
+        "id": "S2B_50MMD_20200830_1_L2A",
+        "tanggal": "2020-08-30",
+        "awan_tile_pct": 35.213524
+      },
+      {
+        "id": "S2A_50MMD_20200805_0_L2A",
+        "tanggal": "2020-08-05",
+        "awan_tile_pct": 36.224145
+      },
+      {
+        "id": "S2B_50MMD_20201022_0_L2A",
+        "tanggal": "2020-10-22",
+        "awan_tile_pct": 43.009874
+      }
+    ]
+  },
+  "periode_akhir": {
+    "rentang": [
+      "2023-08-01",
+      "2023-10-31"
+    ],
+    "scene": [
+      {
+        "id": "S2B_50MMD_20230904_0_L2A",
+        "tanggal": "2023-09-04",
+        "awan_tile_pct": 17.741644
+      },
+      {
+        "id": "S2A_50MMD_20231029_0_L2A",
+        "tanggal": "2023-10-29",
+        "awan_tile_pct": 22.246064
+      },
+      {
+        "id": "S2A_50MMD_20230922_0_L2A",
+        "tanggal": "2023-09-22",
+        "awan_tile_pct": 22.762318
+      },
+      {
+        "id": "S2A_50MMD_20230820_0_L2A",
+        "tanggal": "2023-08-20",
+        "awan_tile_pct": 23.291092
+      },
+      {
+        "id": "S2B_50MMD_20230808_0_L2A",
+        "tanggal": "2023-08-08",
+        "awan_tile_pct": 24.923767
+      },
+      {
+        "id": "S2B_50MMD_20230924_0_L2A",
+        "tanggal": "2023-09-24",
+        "awan_tile_pct": 29.389337
+      },
+      {
+        "id": "S2B_50MMD_20231004_0_L2A",
+        "tanggal": "2023-10-04",
+        "awan_tile_pct": 29.986516
+      },
+      {
+        "id": "S2A_50MMD_20230810_0_L2A",
+        "tanggal": "2023-08-10",
+        "awan_tile_pct": 31.942886
+      }
+    ]
+  },
+  "parameter": {
+    "forest_ndvi_min": 0.7,
+    "dnbr_min": 0.27,
+    "dndvi_max": -0.2,
+    "min_area_ha": 1.0,
+    "min_valid_obs": 1,
+    "open_iterations": 1
+  },
+  "hasil": {
+    "jumlah_gugus": 341,
+    "luas_berubah_ha": 1559.8,
+    "luas_vegetasi_rapat_awal_ha": 48728.9,
+    "fraksi_piksel_teramati": 0.812
+  },
+  "geojson_sha256": "e4ddee8fc3a82d52ca3893f8f9eaedc21739a9425031ac7997a280738d8466b4",
+  "perangkat_lunak": {
+    "python": "3.13.16",
+    "numpy": "2.5.3"
+  },
+  "batasan": [
+    "Hasil adalah INDIKASI perubahan vegetasi, bukan deforestasi terverifikasi dan bukan penyebab perubahan.",
+    "Piksel 20 m; 'hutan' didefinisikan dari NDVI periode awal (>= ambang), bukan dari peta tutupan hutan resmi.",
+    "Komposit median dari beberapa scene dalam satu periode; perubahan musiman/fenologi dan sisa awan dapat memicu positif palsu.",
+    "Tidak ada validasi terhadap data referensi independen atau verifikasi lapangan.",
+    "Kategori penyebab TIDAK diberikan: classifier proyek dilatih pada data sintetis dan tidak berlaku untuk citra nyata."
+  ]
+}

@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgis/postgis:15-3.4
+    container_name: forestwatch_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: forestwatch
+      POSTGRES_PASSWORD: forestwatch_secret
+      POSTGRES_DB: forestwatch
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forestwatch"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: forestwatch_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://forestwatch:forestwatch_secret@db:5432/forestwatch
+      ENVIRONMENT: development
+      SECRET_KEY: dev-secret-key-change-in-production
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+
+  frontend:
+    build: ./frontend
+    container_name: forestwatch_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
