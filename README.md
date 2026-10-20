@@ -4,21 +4,6 @@ Web GIS untuk melihat **indikasi** gangguan hutan dan **prediksi model** kemungk
 
 > **Penting:** sistem memuat **dua jenis data yang selalu diberi label**: (1) **citra nyata** - indikasi perubahan vegetasi hasil `pipeline/` dari Sentinel-2 L2A (1 AOI di sekitar IKN, 2020 vs 2023); penyebab **belum diklasifikasi**; (2) **simulasi** - data buatan (`backend/gis/sentinel_mock.py`) untuk demonstrasi model. Classifier dilatih pada data sintetis dan **tidak** dijalankan pada citra nyata. Hasil bukan bukti penyebab deforestasi, bukan peringatan dini, dan metrik model bukan akurasi dunia nyata. Deteksi perubahan dan klasifikasi penyebab adalah dua hal berbeda; penyebab hanya "terverifikasi" bila operator memverifikasinya.
 
-## Status fitur
-| Kebutuhan PRD | Status |
-|---|---|
-| Peta interaktif, legenda, filter (kategori, provinsi, tanggal, keyakinan, **sumber data**) | Ada; satu filter dipakai peta, statistik, tren, perbandingan, dan ekspor |
-| Pengelolaan citra: metadata tanggal/sumber, pemilihan scene, pemotongan AOI, catatan keterbatasan (awan) | **Ada untuk Sentinel-2 nyata** (`pipeline/`, `run.json`); Sentinel-1 belum |
-| Analisis perubahan dua periode | Ada: komposit bebas awan, NDVI/NBR, kandidat lokasi; plus perbandingan jumlah indikasi antar dua periode |
-| Klasifikasi penyebab + skor keyakinan + "tidak diketahui/perlu verifikasi" | Ada **hanya untuk data simulasi**; data nyata = `tidak_diketahui` |
-| Penjelasan prediksi | Ada (oklusi lokal, perkiraan, bukan SHAP) |
-| Evaluasi: precision/recall/F1, confusion matrix, baseline | Ada (data sintetis; optimistis) |
-| Validasi operator, peran pengguna | Ada: token operator/admin, kategori verifikasi terpisah dari prediksi, ringkasan kesesuaian |
-| Ekspor CSV dan PDF | Ada |
-| Notifikasi indikasi baru | Ada berbasis polling (`/api/disturbances/new`); tanpa push/email |
-| Dashboard tanpa data palsu | Ada; saat backend mati tampil pesan kegagalan |
-| Label penyebab nyata, dataset latih nyata, CNN, fusi Sentinel-1/2, validasi independen/lapangan | **Belum** (membutuhkan data berlabel yang sah) |
-| Docker Compose / PostGIS nyata | Dikonfigurasi, **belum diuji** di sesi pengembangan (tes memakai SQLite) |
 
 ## Struktur folder
 ```text
